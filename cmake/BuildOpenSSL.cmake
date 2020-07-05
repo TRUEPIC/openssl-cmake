@@ -109,9 +109,10 @@ else()
     set(CONFIGURE_OPENSSL_MODULES no-cast no-md2 no-md4 no-mdc2 no-rc4 no-rc5 no-engine no-idea no-mdc2 no-rc5 no-camellia no-ssl3 no-heartbeats no-gost no-deprecated no-capieng no-comp no-dtls no-psk no-srp no-dso no-dsa no-rc2 no-des)
 
     # additional configure script parameters
+    option(OPENSSL_DEBUG_BUILD OFF)
     set(CONFIGURE_OPENSSL_PARAMS --libdir=lib)
     if (OPENSSL_DEBUG_BUILD)
-        set(CONFIGURE_OPENSSL_PARAMS "${CONFIGURE_OPENSSL_PARAMS} no-asm -g3 -O0 -fno-omit-frame-pointer -fno-inline-functions")
+        set(CONFIGURE_OPENSSL_PARAMS "${CONFIGURE_OPENSSL_PARAMS} no-asm -g3 -O0 -fno-omit-frame-pointer -fno-inline-functions -finstrument-functions")
     endif()
     
     # set install command depending of choice on man page generation
@@ -170,7 +171,7 @@ else()
     
     # add openssl target
     ExternalProject_Add(openssl
-        URL https://mirror.viaduck.org/openssl/openssl-${OPENSSL_BUILD_VERSION}.tar.gz
+        URL https://github.com/openssl/openssl/archive/openssl-${OPENSSL_BUILD_VERSION}.tar.gz
         ${OPENSSL_CHECK_HASH}
         UPDATE_COMMAND ""
 
