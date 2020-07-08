@@ -2,6 +2,25 @@
 CMake script supplying `OpenSSL` libraries conveniently, encapsulating the
 `OpenSSL` build system on various platforms.
 
+## Truepic's build instruction (CAdES API)
+
+To configure,
+```bash
+mkdir build && cd build
+cmake .. -DBUILD_OPENSSL=ON -DOPENSSL_BUILD_VERSION=3.0.0-alpha4
+```
+
+To build,
+```bash
+cd build
+make -j
+```
+
+To run `openssl` command,
+```bash
+LD_LIBRARY_PATH=build/usr/local/lib build/usr/local/bin/openssl version
+```
+
 ## Features
 * Allows usage of system OpenSSL
 * Allows trivial and complex building of OpenSSL
