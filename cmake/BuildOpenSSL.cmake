@@ -171,7 +171,7 @@ else()
 
     # add openssl target
     ExternalProject_Add(openssl
-        URL https://github.com/openssl/openssl/archive/openssl-${OPENSSL_BUILD_VERSION}.tar.gz
+        URL https://github.com/TRUEPIC/openssl/archive/${OPENSSL_BUILD_VERSION}.tar.gz
         ${OPENSSL_CHECK_HASH}
         UPDATE_COMMAND ""
 
