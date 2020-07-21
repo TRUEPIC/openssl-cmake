@@ -106,7 +106,9 @@ else()
     set(BUILD_ENV_TOOL ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/building_env.py ${OS} ${MSYS_BASH} ${MINGW_MAKE})
 
     # disable everything we dont need
-    set(CONFIGURE_OPENSSL_MODULES no-threads no-cast no-md2 no-md4 no-mdc2 no-rc4 no-rc5 no-engine no-idea no-mdc2 no-rc5 no-camellia no-ssl3 no-heartbeats no-gost no-deprecated no-capieng no-comp no-dtls no-psk no-srp no-dso no-dsa no-rc2 no-des)
+    if (NOT CONFIGURE_OPENSSL_MODULES)
+        set(CONFIGURE_OPENSSL_MODULES no-threads no-cast no-md2 no-md4 no-mdc2 no-rc4 no-rc5 no-engine no-idea no-mdc2 no-rc5 no-camellia no-ssl3 no-heartbeats no-gost no-deprecated no-capieng no-comp no-dtls no-psk no-srp no-dso no-dsa no-rc2 no-des)
+    endif()
 
     # additional configure script parameters
     option(OPENSSL_DEBUG_BUILD OFF)
